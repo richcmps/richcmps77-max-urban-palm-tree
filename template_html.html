@@ -1,0 +1,119 @@
+<!--
+    Author: Richard Campos
+    Date: November 11, 2025
+    File: index.html
+    Description: Personal portfolio website showcasing Richard Campos' introduction
+                 to web design and IT career transition. Includes a professional
+                 bio section, navigation menu, and footer with secondary links.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Richard Campos' personal portfolio and introduction to web design and IT career transition.">
+    <meta name="author" content="Richard Campos">
+    <title>Richard Campos - Portfolio</title>
+    <style>
+        /* Enable smooth scrolling for in-page anchors */
+        html { scroll-behavior: smooth; }
+        /* Footer + secondary nav styles */
+        footer {
+            background: #f8fafc;
+            color: #111827;
+            border-top: 1px solid #e6eef6;
+            padding: 20px 0;
+            margin-top: 32px;
+            font-size: 0.95rem;
+        }
+        .footer-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .footer-nav {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        .footer-nav a {
+            color: inherit;
+            text-decoration: none;
+            opacity: 0.85;
+        }
+        .footer-nav a:hover { text-decoration: underline; opacity: 1; }
+        .footer-copy { color: #6b7280; }
+        .back-to-top {
+            font-size: 0.9rem;
+            color: #111827;
+            text-decoration: none;
+            margin-left: 12px;
+            opacity: 0.9;
+        }
+        .back-to-top:hover { text-decoration: underline; opacity: 1; }
+        /* Bio section styles */
+        .bio {
+            background: #f0f4f8;
+            border-left: 4px solid #3b82f6;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .bio h3 { margin-top: 0; font-size: 1.1rem; color: #1e40af; }
+        .bio p { margin: 8px 0; color: #374151; line-height: 1.6; }
+        @media (max-width: 560px) {
+            .footer-inner { flex-direction: column; align-items: flex-start; }
+            .footer-nav { margin-top: 8px; }
+        }
+    </style>
+</head>
+<body id="top">
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo">
+            <h1>Richard Campos</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h2>Article Title</h2>
+            <p>Published on <time datetime="2025-11-11">November 11, 2025</time></p>
+            <section class="bio">
+                <h3>About Richard Campos</h3>
+                <p>Hello my name is Richard Campos. I am looking to start a new career in IT. Web design is new to me and this is my first website attempt. Coding can be a bit tedious but it is also satisfying when all of the coding is right and works the way it's supposed to.</p>
+            </section>
+        </article>
+    </main>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; <span id="year">2025</span> Richard Campos</div>
+            <nav class="footer-nav" aria-label="Secondary navigation">
+                <a href="#privacy">Privacy</a>
+                <a href="#terms">Terms</a>
+                <a href="#sitemap">Sitemap</a>
+            </nav>
+            <a class="back-to-top" href="#top">Back to top</a>
+        </div>
+    </footer>
+    <script>
+        // Auto-update the copyright year
+        (function() {
+            var el = document.getElementById('year');
+            if (el) el.textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>

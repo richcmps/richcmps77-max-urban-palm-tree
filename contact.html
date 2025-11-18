@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Contact Camphora Rx — get in touch for prescriptions, advice, and support.">
+    <title>Contact — Camphora Rx</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="index.html" aria-label="Home">
+                <img src="logo.svg" alt="Camphora Rx logo" class="logo" width="96" height="96">
+            </a>
+            <h1>Camphora Rx</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="specialties.html">Specialties</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h2>Contact Camphora Rx</h2>
+            <p>If you have questions about prescriptions, services, or opening hours, please use the contact options below.</p>
+
+            <h3>Contact Details</h3>
+            <p>Phone: <a href="tel:+1234567890">(123) 456-7890</a></p>
+            <p>Email: <a href="mailto:info@camphorarx.com">info@camphorarx.com</a></p>
+            <p>Address: 123 Main Street, Your City, State</p>
+
+            <h3>Hours</h3>
+            <p>Mon–Fri: 9:00 AM — 6:00 PM<br>Sat: 9:00 AM — 1:00 PM<br>Sun: Closed</p>
+
+            <h3>Send Us a Message</h3>
+            <p>Use the form below to send a quick message. (This simple form uses a mailto fallback — replace with a server endpoint to enable direct submission.)</p>
+
+            <form action="mailto:info@camphorarx.com" method="post" enctype="text/plain">
+                <label for="name">Name</label><br>
+                <input id="name" name="name" type="text" required style="width:100%;max-width:420px;"><br><br>
+
+                <label for="email">Email</label><br>
+                <input id="email" name="email" type="email" required style="width:100%;max-width:420px;"><br><br>
+
+                <label for="message">Message</label><br>
+                <textarea id="message" name="message" rows="6" required style="width:100%;max-width:720px;"></textarea><br><br>
+
+                <button type="submit">Send</button>
+            </form>
+
+        </article>
+    </main>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; <span id="year">2025</span> Camphora Rx</div>
+            <nav class="footer-nav" aria-label="Secondary navigation">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="sitemap.html">Sitemap</a>
+            </nav>
+        </div>
+    </footer>
+    <script>
+        (function(){var el=document.getElementById('year'); if(el) el.textContent=new Date().getFullYear();})();
+    </script>
+</body>
+</html>
