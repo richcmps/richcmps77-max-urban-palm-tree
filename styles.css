@@ -1,3 +1,11 @@
+/*
+    Author: Richard Campos
+    Date: November 20, 2025
+    File: styles.css
+    Description: Main stylesheet for Camphora Rx website. Includes responsive layout styles,
+                 navigation, footer, gallery grid, lightbox, flex containers, and form styling.
+*/
+
 /* Global */
 html { scroll-behavior: smooth; }
 body {
@@ -129,9 +137,37 @@ footer {
     gap: 16px;
     margin-top: 16px;
 }
-.gallery-grid figure { margin: 0; }
-.gallery-grid img { width: 100%; height: auto; display: block; border-radius: 6px; }
-.gallery-grid figcaption { font-size: 0.9rem; color: #4b5563; margin-top: 6px; }
+.gallery-grid figure { 
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-grid figure:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+.gallery-grid img { 
+    width: 100%; 
+
+    object-fit: cover;
+    display: block; 
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+}
+.gallery-grid figure:hover img {
+    transform: scale(1.05);
+}
+.gallery-grid figcaption { 
+    font-size: 0.9rem; 
+    color: #4b5563; 
+    margin-top: 6px;
+    padding: 8px;
+    background: #f8fafc;
+    text-align: center;
+}
 
 @media (max-width: 900px) {
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
@@ -181,4 +217,154 @@ footer {
 .form-textarea {
     width: 100%;
     max-width: 720px;
+}
+
+/* Flex container for services */
+.flex-container {
+    display: flex;
+    gap: 20px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+}
+
+.flex-item {
+    flex: 1;
+    min-width: 200px;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e6eef6;
+}
+
+.flex-item h4 {
+    margin-top: 0;
+    color: #1e40af;
+}
+
+.flex-item p {
+    margin-bottom: 0;
+    color: #374151;
+    line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+    .flex-container {
+        flex-direction: column;
+    }
+}
+
+/* Contact table styles */
+.contact-table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-table thead {
+    background: #1e40af;
+    color: #fff;
+}
+
+.contact-table th,
+.contact-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e6eef6;
+}
+
+.contact-table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+}
+
+.contact-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.contact-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.contact-table a {
+    color: #1e40af;
+    text-decoration: none;
+}
+
+.contact-table a:hover {
+    text-decoration: underline;
+}
+
+/* Video container styles */
+.video-container {
+    max-width: 800px;
+    margin: 24px 0;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-video {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    background: #000;
+}
+
+.video-caption {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: #6b7280;
+    text-align: center;
+    font-style: italic;
+}
+
+@media (max-width: 640px) {
+    .video-container {
+        padding: 12px;
+    }
+}
+
+/* About page image styles */
+.about-image {
+    max-width: 800px;
+    margin: 24px 0;
+    text-align: center;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.about-image figcaption {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* Hero image for index page */
+.hero-image {
+    max-width: 100%;
+    margin: 24px 0;
+    text-align: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }

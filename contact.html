@@ -1,3 +1,10 @@
+<!--
+    Author: Richard Campos
+    Date: November 20, 2025
+    File: contact.html
+    Description: Contact page for Camphora Rx with contact details, hours,
+                 and a message form for customer inquiries.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,13 +37,55 @@
             <h2>Contact Camphora Rx</h2>
             <p>If you have questions about prescriptions, services, or opening hours, please use the contact options below.</p>
 
-            <h3>Contact Details</h3>
-            <p>Phone: <a href="tel:+1234567890">(123) 456-7890</a></p>
-            <p>Email: <a href="mailto:info@camphorarx.com">info@camphorarx.com</a></p>
-            <p>Address: 123 Main Street, Your City, State</p>
+            <h3>Contact Information</h3>
+            <table class="contact-table">
+                <caption>Contact Information</caption>
+                <thead>
+                    <tr>
+                        <th>Contact Method</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Phone</td>
+                        <td><a href="tel:+1234567890">(123) 456-7890</a></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><a href="mailto:info@camphorarx.com">info@camphorarx.com</a></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>123 Main Street, Your City, State</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <h3>Hours</h3>
-            <p>Mon–Fri: 9:00 AM — 6:00 PM<br>Sat: 9:00 AM — 1:00 PM<br>Sun: Closed</p>
+            <table class="contact-table">
+                <caption>Operating Hours</caption>
+
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Hours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday – Friday</td>
+                        <td>9:00 AM — 6:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>9:00 AM — 1:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>Closed</td>
+                    </tr>
+                </tbody>
+            </table>
 
             <h3>Send Us a Message</h3>
             <p>Use the form below to send a quick message. (This simple form uses a mailto fallback — replace with a server endpoint to enable direct submission.)</p>
