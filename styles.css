@@ -4,6 +4,10 @@
     File: styles.css
     Description: Main stylesheet for Camphora Rx website. Includes responsive layout styles,
                  navigation, footer, gallery grid, lightbox, flex containers, and form styling.
+    Changes: December 2025 - Enhanced form styling with fieldset/legend, added submit button
+             animations, improved table accessibility styles, added new responsive breakpoints
+             for tablets (768px) and large screens (1200px), added smooth transitions and
+             hover effects throughout, implemented focus states for better accessibility.
 */
 
 /* Global */
@@ -151,14 +155,15 @@ footer {
 }
 .gallery-grid img { 
     width: 100%; 
-
+    height: 200px;
     object-fit: cover;
     display: block; 
     border-radius: 6px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 .gallery-grid figure:hover img {
     transform: scale(1.05);
+    filter: brightness(1.05);
 }
 .gallery-grid figcaption { 
     font-size: 0.9rem; 
@@ -209,14 +214,92 @@ footer {
 .gallery-grid figure { cursor: pointer; }
 
 /* Contact form styles */
-.form-input {
+.form-input,
+.form-textarea {
     width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input {
     max-width: 420px;
 }
 
 .form-textarea {
-    width: 100%;
     max-width: 720px;
+    resize: vertical;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #1e40af;
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.form-input:hover,
+.form-textarea:hover {
+    border-color: #9ca3af;
+}
+
+fieldset {
+    border: 2px solid #e6eef6;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    background: #fafbfc;
+}
+
+legend {
+    font-weight: 600;
+    color: #1e40af;
+    padding: 0 10px;
+    font-size: 1.1rem;
+}
+
+label {
+    font-weight: 500;
+    color: #374151;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+label span[aria-label="required"] {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.submit-btn {
+    background: #1e40af;
+    color: #fff;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+    background: #1e3a8a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.3);
 }
 
 /* Flex container for services */
@@ -367,4 +450,56 @@ footer {
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-image img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Additional responsive breakpoints */
+@media (min-width: 768px) {
+    main {
+        font-size: 1.05rem;
+    }
+    
+    .flex-item {
+        min-width: 250px;
+    }
+}
+
+@media (min-width: 1200px) {
+    main {
+        max-width: 980px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Smooth animations for interactive elements */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+article {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Focus visible for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #1e40af;
+    outline-offset: 2px;
 }

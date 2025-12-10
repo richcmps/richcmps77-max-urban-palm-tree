@@ -4,6 +4,9 @@
     File: about.html
     Description: About page for Camphora Rx showcasing the pharmacy's history,
                  mission, and commitment to exceptional care and community service.
+    Changes: Added HTML5 video element with controls and fallback content,
+             integrated pharmacy image with figure/figcaption semantic elements,
+             enhanced multimedia content with video-container and about-video classes.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +40,7 @@
             <h2>About Camphora Rx</h2>
             
             <figure class="about-image">
-                <img src="images/Designer.jpeg" alt="Camphora Rx pharmacy" width="800" height="500">
+                <img src="Videos/Designer.jpeg" alt="Camphora Rx pharmacy" width="800" height="500">
                 <figcaption>Our commitment to quality healthcare and personalized service</figcaption>
             </figure>
             
@@ -53,7 +56,7 @@
             <p>Watch this video to learn more about Camphora Rx and our commitment to your health.</p>
             
             <div class="video-container">
-                <video class="about-video" controls poster="images/video-poster.jpg" aria-label="Tour of Camphora Rx Pharmacy">
+                <video class="about-video" controls preload="metadata" width="800" height="450" aria-label="Tour of Camphora Rx Pharmacy">
                     <source src="Videos/video project 1.mp4" type="video/mp4">
                     Your browser does not support the video tag. Please <a href="Videos/video project 1.mp4">download the video</a> instead.
                 </video>

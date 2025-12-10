@@ -4,6 +4,15 @@
     File: contact.html
     Description: Contact page for Camphora Rx with contact details, hours,
                  and a message form for customer inquiries.
+    Changes: December 2025 - Added styled HTML tables with semantic markup (thead, tbody, caption)
+             for contact information and operating hours. Replaced inline styles with external
+             CSS classes (.contact-table, .form-input, .form-textarea) for maintainability.
+             Enhanced form with comprehensive form elements: multiple fieldsets with legends,
+             text fields (name, email, phone, subject), textarea for messages, radio buttons
+             for contact preference, checkboxes for services and newsletter, select dropdown
+             for inquiry type. Added form validation with required fields, scope attributes
+             on table headers for accessibility, and output div for JavaScript form handling.
+             Integrated script.js for dynamic form processing.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -42,8 +51,8 @@
                 <caption>Contact Information</caption>
                 <thead>
                     <tr>
-                        <th>Contact Method</th>
-                        <th>Details</th>
+                        <th scope="col">Contact Method</th>
+                        <th scope="col">Details</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,8 +76,8 @@
 
                 <thead>
                     <tr>
-                        <th>Day</th>
-                        <th>Hours</th>
+                        <th scope="col">Day</th>
+                        <th scope="col">Hours</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,18 +99,78 @@
             <h3>Send Us a Message</h3>
             <p>Use the form below to send a quick message. (This simple form uses a mailto fallback — replace with a server endpoint to enable direct submission.)</p>
 
-            <form action="mailto:info@camphorarx.com" method="post" enctype="text/plain">
-                <label for="name">Name</label><br>
-                <input id="name" name="name" type="text" required class="form-input"><br><br>
+            <form id="webForm" action="#">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    
+                    <label for="name">Full Name <span aria-label="required">*</span></label><br>
+                    <input id="name" name="name" type="text" required class="form-input" 
+                           placeholder="Enter your full name" autocomplete="name" 
+                           aria-required="true"><br><br>
 
-                <label for="email">Email</label><br>
-                <input id="email" name="email" type="email" required class="form-input"><br><br>
+                    <label for="email">Email Address <span aria-label="required">*</span></label><br>
+                    <input id="email" name="email" type="email" required class="form-input" 
+                           placeholder="your.email@example.com" autocomplete="email" 
+                           aria-required="true"><br><br>
 
-                <label for="message">Message</label><br>
-                <textarea id="message" name="message" rows="6" required class="form-textarea"></textarea><br><br>
+                    <label for="phone">Phone Number</label><br>
+                    <input id="phone" name="phone" type="tel" class="form-input" 
+                           placeholder="(123) 456-7890" autocomplete="tel"><br><br>
+                </fieldset>
 
-                <button type="submit">Send</button>
+                <fieldset>
+                    <legend>Inquiry Details</legend>
+                    
+                    <label for="subject">Subject <span aria-label="required">*</span></label><br>
+                    <input id="subject" name="subject" type="text" required class="form-input" 
+                           placeholder="Brief subject line" aria-required="true"><br><br>
+
+                    <label for="inquiry-type">Type of Inquiry <span aria-label="required">*</span></label><br>
+                    <select id="inquiry-type" name="inquiry-type" required class="form-input" aria-required="true">
+                        <option value="">-- Please select --</option>
+                        <option value="prescription">Prescription Question</option>
+                        <option value="refill">Refill Request</option>
+                        <option value="product">Product Information</option>
+                        <option value="insurance">Insurance Question</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="other">Other</option>
+                    </select><br><br>
+
+                    <label>Preferred Contact Method <span aria-label="required">*</span></label><br>
+                    <input type="radio" id="contact-email" name="contact-method" value="email" required>
+                    <label for="contact-email">Email</label><br>
+                    <input type="radio" id="contact-phone" name="contact-method" value="phone">
+                    <label for="contact-phone">Phone</label><br>
+                    <input type="radio" id="contact-either" name="contact-method" value="either">
+                    <label for="contact-either">Either</label><br><br>
+
+                    <label for="message">Message <span aria-label="required">*</span></label><br>
+                    <textarea id="message" name="message" rows="6" required class="form-textarea" 
+                              placeholder="How can we help you today?" 
+                              aria-required="true"></textarea><br><br>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Additional Options</legend>
+                    
+                    <label>Services Interested In (check all that apply):</label><br>
+                    <input type="checkbox" id="service-prescription" name="services" value="prescription">
+                    <label for="service-prescription">Prescription Services</label><br>
+                    <input type="checkbox" id="service-otc" name="services" value="otc">
+                    <label for="service-otc">Over-the-Counter Products</label><br>
+                    <input type="checkbox" id="service-immunization" name="services" value="immunization">
+                    <label for="service-immunization">Immunizations</label><br>
+                    <input type="checkbox" id="service-consultation" name="services" value="consultation">
+                    <label for="service-consultation">Health Consultation</label><br><br>
+
+                    <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+                    <label for="newsletter">Subscribe to our monthly newsletter</label><br><br>
+                </fieldset>
+
+                <button type="submit" class="submit-btn">Send Message</button>
             </form>
+
+            <div id="output"></div>
 
         </article>
     </main>
@@ -118,5 +187,6 @@
     <script>
         (function(){var el=document.getElementById('year'); if(el) el.textContent=new Date().getFullYear();})();
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
