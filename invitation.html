@@ -1,0 +1,82 @@
+<!--
+    Author: Richard Campos
+    Date: December 15, 2025
+    File: invitation.html
+    Description: Invitation page for Camphora Rx allowing customers to send
+                 personalized event invitations with dynamic form processing.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Send personalized invitations through Camphora Rx">
+    <title>Invitation — Camphora Rx</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="index.html" aria-label="Home">
+                <img src="logo.svg" alt="Camphora Rx logo" class="logo" width="96" height="96">
+            </a>
+            <h1>Camphora Rx</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="specialties.html">Specialties</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h2>Send an Invitation</h2>
+            <p>Use this form to create a personalized invitation message.</p>
+
+            <form id="webForm" action="#">
+                <fieldset>
+                    <legend>Invitation Details</legend>
+                    
+                    <label for="recipient">Recipient Name <span aria-label="required">*</span></label><br>
+                    <input id="recipient" name="recipient" type="text" required class="form-input" 
+                           placeholder="Enter recipient's name" aria-required="true"><br><br>
+
+                    <label for="host">Your Name (Host) <span aria-label="required">*</span></label><br>
+                    <input id="host" name="host" type="text" required class="form-input" 
+                           placeholder="Enter your name" aria-required="true"><br><br>
+
+                    <label for="event">Event Name</label><br>
+                    <input id="event" name="event" type="text" class="form-input" 
+                           placeholder="Event name (optional)"><br><br>
+
+                    <label for="date">Event Date</label><br>
+                    <input id="date" name="date" type="date" class="form-input"><br><br>
+
+                    <button type="submit" class="submit-btn">Generate Invitation</button>
+                </fieldset>
+            </form>
+
+            <div id="output"></div>
+
+        </article>
+    </main>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; <span id="year">2025</span> Camphora Rx</div>
+            <nav class="footer-nav" aria-label="Secondary navigation">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="sitemap.html">Sitemap</a>
+            </nav>
+        </div>
+    </footer>
+    <script>
+        (function(){var el=document.getElementById('year'); if(el) el.textContent=new Date().getFullYear();})();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
