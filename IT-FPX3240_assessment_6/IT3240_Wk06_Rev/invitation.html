@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Capella Volunteers - Invitation</title>
+    <link rel="stylesheet" href="css/styles.wk06.css">
+</head>
+<body>
+<div class="top">
+    <a class="logo" href="invitation.html">CapellaVolunteers<span class="org">.org</span></a>
+</div>
+<nav>
+    <ul>
+        <!-- Links won't work for week 6 -->
+        <li><a href="invitation.html">Home</a></li>
+        <li><a href="invitation.html" class="active">Invitation</a></li>
+        <li><a href="invitation.html">Volunteers</a></li>
+        <li><a href="invitation.html">Gallery</a></li>
+        <li><a href="invitation.html">Registration</a></li>
+    </ul>
+</nav>
+<section>
+    <h2 class="hidden">Invitation Form</h2>
+    <!-- # means stay on this page -->
+    <form action="#" id="pageForm">
+        <label for="recipient-input" id="recipient-label">Recipient name:</label>
+        <input type="text" name="recipient-input" id="recipient-input" placeholder="Enter your Recipient Name">
+        <label for="host-input" id="host-label">Host name:</label>
+        <input type="text" name="host-input" id="host-input" placeholder="Enter your Name">
+        <!-- return false; blocks submission of the form -->
+        <input type="submit" value="Submit" id="submit" onclick="replaceContent();return false;">
+    </form>
+</section>
+
+<!-- Output area will be hidden until this CSS class is removed by the JavaScript -->
+<section id="outputArea" class="hidden">
+    <h2 class="hidden">Output Area</h2>
+    Hello <span id="recipient-placeholder">recipientName</span>!
+    <br>
+    <br> You have been invited to volunteer for an event held on July 1st. Please respond to this email to sign up as a volunteer.
+    <br>
+    <br> Thanks!
+    <br>
+    <br>
+    <span id="host-placeholder">hostName</span>
+</section>
+<footer>rev. 2024 for work in IT3240</footer>
+<!-- Script must be at the end of body -->
+<script src="js/invitation.js"></script>
+</body>
+</html>
