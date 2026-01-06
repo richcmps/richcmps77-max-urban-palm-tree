@@ -1,19 +1,13 @@
-<!--
-    Author: Richard Campos
-    Date: January 5, 2026
-    File: volunteers.html
-    Description: Volunteer opportunities page for Camphora Rx, showcasing
-                 ways to get involved with the pharmacy and community.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Volunteer with Camphora Rx - Get involved in community health initiatives and pharmacy support programs.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Volunteer invitation form for Camphora Rx - Manage volunteer sign-ups and invitations.">
     <meta name="author" content="Richard Campos">
-    <title>Volunteers — Camphora Rx</title>
+    <title>Volunteer Invitation - Camphora Rx</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="IT3240_Wk07_Rev2/css/styles.wk07.css">
 </head>
 <body id="top">
     <header>
@@ -36,62 +30,30 @@
         </nav>
     </header>
     <main>
-        <article>
-            <h2>Volunteer Opportunities</h2>
-            <p>Published on <time datetime="2026-01-05">January 5, 2026</time></p>
-            
-            <section class="bio">
-                <h3>Join Our Team</h3>
-                <p>At Camphora Rx, we believe in the power of community. Our volunteer program offers meaningful opportunities to make a difference in the lives of others while gaining valuable experience in healthcare and pharmacy services. Whether you're a student, retiree, or simply passionate about helping others, we have a place for you.</p>
-            </section>
-            
-            <h3>Volunteer Roles</h3>
-            <div class="flex-container">
-                <div class="flex-item">
-                    <h4>Community Outreach</h4>
-                    <p>Help organize health fairs, wellness events, and educational programs in the community.</p>
-                </div>
-                <div class="flex-item">
-                    <h4>Patient Support</h4>
-                    <p>Assist customers with navigation, provide companionship, and help with non-clinical tasks.</p>
-                </div>
-                <div class="flex-item">
-                    <h4>Administrative Help</h4>
-                    <p>Support our team with filing, data entry, and other administrative duties.</p>
-                </div>
-            </div>
+        <section>
+            <h2 class="hidden">Invitation Form</h2>
+            <!-- # means stay on this page -->
+            <form action="#" id="pageForm">
+        <label for="first-name-input" id="first-name-label">First name:</label>
+        <input type="text" name="first-name-input" id="first-name-input" placeholder="Enter first name">
+        <label for="last-name-input" id="last-name-label">Last name:</label>
+        <input type="text" name="last-name-input" id="last-name-input" placeholder="Enter last name">
+        <!-- Plain buttons, not submit buttons -->
+        <input type="button" value="Add" id="add-button">
+        <input type="button" value="Delete" id="delete-button">
+        <label id="volunteer-list-label" for="volunteer-list-area">Volunteer List:</label>
+        <!-- List display area -->
+        <textarea id="volunteer-list-area">
 
-            <section>
-                <h3>Benefits of Volunteering</h3>
-                <ul>
-                    <li>Gain hands-on experience in a healthcare setting</li>
-                    <li>Make meaningful connections with community members</li>
-                    <li>Develop professional skills and build your resume</li>
-                    <li>Flexible scheduling to fit your availability</li>
-                    <li>Letter of recommendation upon completion of service</li>
-                </ul>
-            </section>
-
-            <section>
-                <h3>Requirements</h3>
-                <ul>
-                    <li>Minimum age of 16 years old</li>
-                    <li>Commitment of at least 4 hours per week for 3 months</li>
-                    <li>Pass a background check</li>
-                    <li>Attend a brief orientation session</li>
-                    <li>Professional demeanor and positive attitude</li>
-                </ul>
-            </section>
-
-            <section>
-                <h3>How to Apply</h3>
-                <p>Ready to make a difference? We'd love to hear from you! Please visit our <a href="contact.html">contact page</a> to submit your volunteer application or call us at (555) 123-4567 to learn more about current opportunities.</p>
-            </section>
-        </article>
+        </textarea>
+        <input type="button" value="Sort by Name" id="sort-button">
+        <input type="button" value="Clear Volunteers" id="clear-button">
+    </form>
+</section>
     </main>
     <footer>
         <div class="footer-inner">
-            <div class="footer-copy">&copy; <span id="year">2026</span> Camphora Rx</div>
+            <div class="footer-copy">&copy; <span id="year">2025</span> Camphora Rx</div>
             <nav class="footer-nav" aria-label="Secondary navigation">
                 <a href="privacy.html">Privacy</a>
                 <a href="terms.html">Terms</a>
@@ -101,10 +63,13 @@
         </div>
     </footer>
     <script>
+        // Auto-update the copyright year
         (function() {
             var el = document.getElementById('year');
             if (el) el.textContent = new Date().getFullYear();
         })();
     </script>
+    <!-- Script must be at the end of body -->
+    <script src="IT3240_Wk07_Rev2/js/volunteers.js"></script>
 </body>
 </html>
