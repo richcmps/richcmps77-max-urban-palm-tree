@@ -18,14 +18,7 @@ html {
 
 body {
     min-height: 100dvh;
-    display: grid; /* grid container for page */
-    grid-template-columns: 1fr;
-    /* 1st row CapellaVolunteers.org - auto height
-       2nd row nav bar - auto height
-       3rd row form - 1fr height
-       4th row output - 1fr height
-       5th row footer - auto height - helps keep footer at bottom */
-    grid-template-rows: auto auto 1fr 1fr auto;
+    /* Using flexbox to ensure footer stays at bottom */
 }
 
 .logo { /* logo at the top of the page */
@@ -44,8 +37,6 @@ body {
 }
 
 nav {
-    grid-column: 1 / -1; /* given the full width of the page */
-    grid-row: 2;
     margin: 1rem 0;
 }
 
@@ -86,8 +77,6 @@ nav ul li a:hover {
 
 #pageForm {
     /* grid (sub)container for the form */
-    grid-row: 3;
-    grid-column: 1;
     height: 20dvh;
     width: 65dvw;
     display: grid;
