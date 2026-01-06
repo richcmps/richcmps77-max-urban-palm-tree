@@ -17,8 +17,28 @@ html {
 }
 
 body {
-    min-height: 100dvh;
-    /* Using flexbox to ensure footer stays at bottom */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Flexbox layout to keep footer at bottom */
+}
+
+header {
+    flex-shrink: 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
 }
 
 .logo { /* logo at the top of the page */
@@ -77,13 +97,14 @@ nav ul li a:hover {
 
 #pageForm {
     /* grid (sub)container for the form */
-    height: 20dvh;
+    min-height: 30vh;
     width: 65dvw;
     display: grid;
     grid-template-columns: 0.5fr repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(7, auto);
     grid-auto-flow: column;
     margin: var(--standard-gap) 0;
+    gap: 0.5rem;
 }
 
 label {
@@ -203,10 +224,11 @@ input[type=submit] {
 #volunteer-list-area {
     grid-column: 2 / 4;
     grid-row: 5;
-    height: 15rem;
+    height: 20rem;
     max-width: 65ch;
     margin: 0.5rem;
     font-size: var(--standard-height);
+    resize: vertical;
 }
 
 #sort-button {
@@ -231,8 +253,10 @@ input[type=submit] {
 footer {
     width: 100%;
     text-align: center;
-    margin-top: auto; /* footer at the bottom of the page by setting top margin */
     color: var(--charcoal);
+    background-color: #fff8e1;
+    padding: 1rem 0;
+    border-top: 1px solid #e6eef6;
 }
 
 .hidden {
