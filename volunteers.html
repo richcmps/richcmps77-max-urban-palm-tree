@@ -1,3 +1,22 @@
+<!--
+    Author: Richard Campos
+    Date: January 5, 2026
+    File: volunteers.html
+    Description: Volunteer management page for Camphora Rx with interactive form
+                 to add, delete, sort, and clear volunteers from a list.
+    
+    Changes made:
+    - Updated header to match site-wide design with logo image and consistent navigation
+    - Changed from old div.top structure to semantic header element
+    - Fixed navigation paths from relative (../) to root-relative
+    - Added comprehensive volunteer program content and instructions
+    - Implemented flexbox layout for proper footer positioning
+    - Extended page content with volunteer roles, requirements, FAQs, and benefits
+    - Moved inline styles to external CSS file (styles.wk07.css)
+    - Added consistent footer with secondary navigation matching other pages
+    - Included copyright year auto-update script
+    - Form uses JavaScript (volunteers.js) for dynamic volunteer list management
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +25,13 @@
     <meta name="description" content="Volunteer invitation form for Camphora Rx - Manage volunteer sign-ups and invitations.">
     <meta name="author" content="Richard Campos">
     <title>Volunteer Invitation - Camphora Rx</title>
+    <!-- Main site styles for consistent design across all pages -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Page-specific styles for volunteer form and layout -->
     <link rel="stylesheet" href="IT3240_Wk07_Rev2/css/styles.wk07.css">
 </head>
 <body id="top">
+    <!-- Updated header with logo and navigation to match site design -->
     <header>
         <div class="logo-container">
             <a href="index.html" aria-label="Home">
@@ -29,6 +51,7 @@
             </ul>
         </nav>
     </header>
+    <!-- Main content area uses flexbox (flex: 1) to push footer to bottom -->
     <main>
         <section>
             <h2>Volunteer Management</h2>
@@ -46,7 +69,9 @@
                 <li><strong>Clear All:</strong> Click "Clear Volunteers" to remove all entries from the list.</li>
             </ul>
             
-            <!-- # means stay on this page -->
+            <!-- Volunteer management form with JavaScript functionality -->
+            <!-- Form uses grid layout with 7 rows (auto-sized to prevent overlap) -->
+            <!-- JavaScript functions: addVolunteer(), deleteVolunteer(), sortVolunteers(), clearVolunteers(), displayVolunteers() -->
             <form action="#" id="pageForm">
         <label for="first-name-input" id="first-name-label">First name:</label>
         <input type="text" name="first-name-input" id="first-name-input" placeholder="Enter first name">
@@ -56,7 +81,8 @@
         <input type="button" value="Add" id="add-button">
         <input type="button" value="Delete" id="delete-button">
         <label id="volunteer-list-label" for="volunteer-list-area">Volunteer List:</label>
-        <!-- List display area -->
+        <!-- Display area shows volunteers in numbered list format (LastName, FirstName) -->
+        <!-- Textarea height set to 20rem with vertical resize capability -->
         <textarea id="volunteer-list-area">
 
         </textarea>
@@ -64,7 +90,9 @@
         <input type="button" value="Clear Volunteers" id="clear-button">
     </form>
     
-    <section style="margin-top: 3rem;">
+    <!-- Extended content section added to increase page length and provide comprehensive volunteer information -->
+    <!-- Uses .about-section class for top margin (moved from inline style) -->
+    <section class="about-section">
         <h3>About Our Volunteer Program</h3>
         <p>Volunteers are the backbone of our community outreach programs at Camphora Rx. By participating in our events and activities, you help us serve the community better and make a positive impact on people's health and well-being.</p>
         
@@ -181,12 +209,17 @@
             <li>Begin making a difference in your community!</li>
         </ol>
         
-        <p style="margin-top: 2rem; padding: 1.5rem; background: #f0f4f8; border-left: 4px solid #3b82f6; border-radius: 4px;">
+        <!-- Call-to-action box with styled background and border -->
+        <!-- Uses .cta-box class for styling (moved from inline style) -->
+        <p class="cta-box">
             <strong>Join us today!</strong> Your time and dedication can make a real difference in the health and well-being of our community members. Together, we can create a healthier, more informed community.
         </p>
     </section>
 </section>
     </main>
+    <!-- Footer with consistent design matching other pages -->
+    <!-- Includes secondary navigation and back-to-top link -->
+    <!-- Positioned at bottom using flexbox layout (flex-shrink: 0) -->
     <footer>
         <div class="footer-inner">
             <div class="footer-copy">&copy; <span id="year">2025</span> Camphora Rx</div>
@@ -198,6 +231,7 @@
             <a class="back-to-top" href="#top">Back to top</a>
         </div>
     </footer>
+    <!-- Auto-update copyright year to current year -->
     <script>
         // Auto-update the copyright year
         (function() {
@@ -205,7 +239,8 @@
             if (el) el.textContent = new Date().getFullYear();
         })();
     </script>
-    <!-- Script must be at the end of body -->
+    <!-- Volunteer management JavaScript with add, delete, sort, and clear functions -->
+    <!-- Must be at end of body to ensure DOM is fully loaded -->
     <script src="IT3240_Wk07_Rev2/js/volunteers.js"></script>
 </body>
 </html>

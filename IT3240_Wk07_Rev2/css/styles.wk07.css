@@ -263,3 +263,15 @@ footer {
     visibility: hidden;
     position: absolute;
 }
+
+.about-section {
+    margin-top: 3rem;
+}
+
+.cta-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f0f4f8;
+    border-left: 4px solid #3b82f6;
+    border-radius: 4px;
+}
