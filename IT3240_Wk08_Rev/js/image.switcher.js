@@ -7,6 +7,8 @@
 let currentImageIndex = 0;
 // CHANGE: Added imageList array to store the paths of all banner images
 let imageList = [];
+// CHANGE: Added intervalId to store setInterval reference for pause/resume functionality
+let intervalId = null;
 
 /**
  * Preloads an array of images to ensure they load smoothly when switching
@@ -52,27 +54,76 @@ function switchImage() {
 }
 
 /**
+ * Initializes the image switcher with custom configuration
+ * @param {Array} imagePaths - Array of image file paths to cycle through
+ * @param {string} targetSelector - CSS selector for the image element to update
+ * @param {number} interval - Time in milliseconds between image switches
+ * 
+ * CHANGES MADE:
+ * - Refactored to accept dynamic image paths as parameters for reusability
+ * - Made function reusable across different pages with different image sets
+ * - Accepts custom target selector and interval for flexibility
+ * - Can be called from different pages with different configurations
+ */
+function initImageSwitcher(imagePaths, targetSelector = '#main-image img', interval = 3000) {
+    // Validate that image paths were provided
+    if (!imagePaths || imagePaths.length === 0) {
+        console.error('No image paths provided to initImageSwitcher');
+        return;
+    }
+    
+    // Store the image paths in the global imageList
+    imageList = imagePaths;
+    
+    // Preload all images to ensure smooth transitions
+    // CHANGE: Call preloadImages to cache all images in browser memory
+    preloadImages(imageList);
+    
+    // Get the image element to attach event listeners
+    const targetImage = document.querySelector(targetSelector);
+    
+    if (!targetImage) {
+        console.error('Target image element not found:', targetSelector);
+        return;
+    }
+    
+    // Start switching images at the specified interval
+    // CHANGE: Store interval ID so we can pause/resume rotation
+    intervalId = setInterval(switchImage, interval);
+    
+    // Add hover event listeners to pause/resume rotation
+    // CHANGE: Pause rotation when mouse enters the image
+    targetImage.addEventListener('mouseenter', function() {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    });
+    
+    // CHANGE: Resume rotation when mouse leaves the image
+    targetImage.addEventListener('mouseleave', function() {
+        if (!intervalId) {
+            intervalId = setInterval(switchImage, interval);
+        }
+    });
+}
+
+/**
  * Window onload function to initialize the image switcher
  * 
  * CHANGES MADE:
- * - Implemented window.onload to ensure DOM is fully loaded before execution
- * - Populated imageList array with paths to three banner images
- * - Called preloadImages() to cache all images before display
- * - Used setInterval() to automate image switching every 3 seconds
+ * - Refactored to use the new reusable initImageSwitcher function
+ * - Image paths can now be easily customized per page
+ * - Configuration is centralized and easier to maintain
  */
 window.onload = function() {
     /* Complete this code to get the list/array of images to cycle through. Preload the images
         and then start the process of switching the image every 3 seconds.  */
     
-    // Define the array of images to cycle through
-    // CHANGE: Populated imageList with three banner image paths
-    imageList = ['images/banner1.jpg', 'images/banner2.jpg', 'images/banner3.jpg'];
+    // Define the array of images to cycle through for this page
+    const bannerImages = ['images/banner1.jpg', 'images/banner2.jpg', 'images/banner3.jpg'];
     
-    // Preload all images to ensure smooth transitions
-    // CHANGE: Call preloadImages to cache all banner images in browser memory
-    preloadImages(imageList);
-    
-    // Start switching images every 3 seconds (3000 milliseconds)
-    // CHANGE: setInterval repeatedly calls switchImage every 3000ms for automatic rotation
-    setInterval(switchImage, 3000);
+    // Initialize the image switcher with custom configuration
+    // CHANGE: Using reusable function that accepts dynamic parameters
+    initImageSwitcher(bannerImages, '#main-image img', 3000);
 }
