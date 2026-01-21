@@ -104,7 +104,7 @@ input[type=email]{
 input[type=text]::placeholder,
 input[type=password]::placeholder,
 input[type=email]::placeholder{
-        color: rgba(128, 13, 30, 0.5);
+        color: color-mix(in srgb, var(--maroon) 50%, transparent);
 }
 
 
@@ -261,6 +261,19 @@ input:not(:placeholder-shown):invalid {
 
 input:focus:invalid {
     outline-color: dodgerblue;
+}
+
+#output {
+    margin: 1.5rem;
+    padding: 1rem;
+    max-width: 50ch;
+    background-color: var(--lightgray);
+    border: 1px solid var(--charcoal);
+}
+#output-headline {
+    font-size: 1.5rem;
+    color: var(--maroon);
+    margin: 1rem 1rem 1rem 1.5rem;
 }
 
 footer {
