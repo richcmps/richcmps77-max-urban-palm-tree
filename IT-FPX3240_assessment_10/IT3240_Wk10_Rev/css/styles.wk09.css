@@ -104,7 +104,7 @@ input[type=email]{
 input[type=text]::placeholder,
 input[type=password]::placeholder,
 input[type=email]::placeholder{
-        color: color-mix(in srgb, var(--maroon) 50%, transparent);
+        color: rgba(128, 13, 30, 0.5);
 }
 
 
