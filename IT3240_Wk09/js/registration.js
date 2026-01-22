@@ -49,12 +49,16 @@ const configureFormValidation = function() {
             resultMessage.textContent = "Registration successful!"
             resultMessage.style.color = "green"
         } else {
-            // CHANGE: Display error message in red when validation fails
-            resultMessage.textContent = "Please correct the errors in the form."
+            // Collect all validation errors
+            // CHANGE: Gather all error messages into an array for display
+            const errors = collectValidationErrors()
+            
+            // Display all errors together
+            // CHANGE: Show all validation errors in a formatted list
+            resultMessage.innerHTML = "<strong>Please correct the following errors:</strong><ul>" + 
+                errors.map(error => "<li>" + error + "</li>").join("") + 
+                "</ul>"
             resultMessage.style.color = "red"
-            // reportValidity() will show native browser validation messages
-            // CHANGE: Show browser's built-in validation messages near input fields
-            form.reportValidity()
             
             // Find and focus on the first invalid field
             // CHANGE: Set focus on first erroneous field for better user experience
@@ -64,6 +68,51 @@ const configureFormValidation = function() {
             }
         }
     })
+}
+
+/**
+ * Collects all validation errors from the form fields
+ * @returns {Array} - Array of error messages for invalid fields
+ * 
+ * CHANGES MADE:
+ * - Iterates through all form fields to find validation errors
+ * - Returns array of custom validation messages
+ */
+const collectValidationErrors = function() {
+    const errors = []
+    const username = document.getElementById("reg-username-input")
+    const password = document.getElementById("reg-password-input")
+    const passwordVerify = document.getElementById("reg-password-verify-input")
+    const firstName = document.getElementById("reg-first-name-input")
+    const lastName = document.getElementById("reg-last-name-input")
+    const email = document.getElementById("reg-email-input")
+    
+    // Check each field and collect error messages
+    if (!username.validity.valid) {
+        errors.push(username.validationMessage)
+    }
+    
+    if (!password.validity.valid) {
+        errors.push(password.validationMessage)
+    }
+    
+    if (!passwordVerify.validity.valid) {
+        errors.push(passwordVerify.validationMessage)
+    }
+    
+    if (!firstName.validity.valid) {
+        errors.push(firstName.validationMessage)
+    }
+    
+    if (!lastName.validity.valid) {
+        errors.push(lastName.validationMessage)
+    }
+    
+    if (!email.validity.valid) {
+        errors.push(email.validationMessage)
+    }
+    
+    return errors
 }
 
 /**
