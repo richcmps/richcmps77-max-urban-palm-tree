@@ -51,6 +51,13 @@ const configureFormValidation = function() {
             // reportValidity() will show native browser validation messages
             // CHANGE: Show browser's built-in validation messages near input fields
             form.reportValidity()
+            
+            // Find and focus on the first invalid field
+            // CHANGE: Set focus on first erroneous field for better user experience
+            const firstInvalidField = form.querySelector(':invalid')
+            if (firstInvalidField) {
+                firstInvalidField.focus()
+            }
         }
     })
 }
