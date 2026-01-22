@@ -34,6 +34,10 @@ const configureFormValidation = function() {
         // CHANGE: Provide user-friendly error messages for each field type
         setCustomValidationMessages()
 
+        // Validate phone number format using regex
+        // CHANGE: Custom regex validation for phone number
+        const phoneValid = validatePhoneNumber()
+
         // Call the checkPassword() function to make sure input in the password fields is valid & that they  match.
         // CHANGE: Validate passwords match and meet requirements
         const passwordsValid = checkPassword()
@@ -43,8 +47,8 @@ const configureFormValidation = function() {
          */
         
         // Check if both form validation and password check pass
-        // CHANGE: Combine HTML5 validation with custom password validation
-        if (form.checkValidity() && passwordsValid) {
+        // CHANGE: Combine HTML5 validation with custom password and phone validation
+        if (form.checkValidity() && passwordsValid && phoneValid) {
             // CHANGE: Display success message in green when all validation passes
             resultMessage.textContent = "Registration successful!"
             resultMessage.style.color = "green"
@@ -86,6 +90,7 @@ const collectValidationErrors = function() {
     const firstName = document.getElementById("reg-first-name-input")
     const lastName = document.getElementById("reg-last-name-input")
     const email = document.getElementById("reg-email-input")
+    const phone = document.getElementById("reg-phone-input")
     
     // Check each field and collect error messages
     if (!username.validity.valid) {
@@ -110,6 +115,10 @@ const collectValidationErrors = function() {
     
     if (!email.validity.valid) {
         errors.push(email.validationMessage)
+    }
+    
+    if (!phone.validity.valid) {
+        errors.push(phone.validationMessage)
     }
     
     return errors
@@ -171,14 +180,43 @@ const setCustomValidationMessages = function() {
         lastName.setCustomValidity("")
     }
     
-    // Email validation
+    // Email validation with regex
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     if (email.validity.valueMissing) {
         email.setCustomValidity("Please enter your email address")
-    } else if (email.validity.typeMismatch) {
+    } else if (email.validity.typeMismatch || !emailRegex.test(email.value)) {
         email.setCustomValidity("Please enter a valid email address")
     } else {
         email.setCustomValidity("")
     }
+}
+
+/**
+ * Validates phone number format using regular expression
+ * @returns {boolean} - Returns true if phone is valid or empty, false otherwise
+ * 
+ * CHANGES MADE:
+ * - Uses regex pattern to validate phone format (xxx) xxx-xxxx
+ * - Allows empty phone field since it's optional
+ * - Sets custom validity message for invalid format
+ */
+const validatePhoneNumber = function() {
+    const phoneField = document.getElementById("reg-phone-input")
+    // Clear custom validity before checking
+    phoneField.setCustomValidity("")
+    
+    // Phone format regex: (xxx) xxx-xxxx
+    const phoneRegex = /^\(\d{3}\)\s\d{3}-\d{4}$/
+    
+    // If phone field has a value, validate format
+    if (phoneField.value.trim() !== "") {
+        if (!phoneRegex.test(phoneField.value)) {
+            phoneField.setCustomValidity("Phone number must be in format: (xxx) xxx-xxxx")
+            return false
+        }
+    }
+    
+    return true
 }
 
 /**
@@ -205,9 +243,18 @@ const checkPassword = function() {
     // Use setCustomValidity() to assign an error string when there is a problem.
     // Setting the custom validity to an empty string means the input is valid
     
+    // Password regex: at least 8 chars, contains letter and number
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/
+    
     // Check if password field meets HTML5 validation requirements (required, minlength)
-    // CHANGE: Validate password meets required and minlength="8" attributes
+    // CHANGE: Validate password meets required and minlength="8" attributes plus regex pattern
     if (!passwordField.checkValidity()) {
+        return false
+    }
+    
+    // Additional regex validation for password strength
+    if (!passwordRegex.test(passwordField.value)) {
+        passwordField.setCustomValidity("Password must be at least 8 characters and contain both letters and numbers")
         return false
     }
     
