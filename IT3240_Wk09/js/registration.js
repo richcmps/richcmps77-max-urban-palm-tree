@@ -30,6 +30,10 @@ const configureFormValidation = function() {
         // CHANGE: Get result message div to display validation feedback
         const resultMessage = document.getElementById("reg-result-message")
 
+        // Set custom validation messages for required fields
+        // CHANGE: Provide user-friendly error messages for each field type
+        setCustomValidationMessages()
+
         // Call the checkPassword() function to make sure input in the password fields is valid & that they  match.
         // CHANGE: Validate passwords match and meet requirements
         const passwordsValid = checkPassword()
@@ -60,6 +64,72 @@ const configureFormValidation = function() {
             }
         }
     })
+}
+
+/**
+ * Sets custom validation messages for all required fields
+ * Provides user-friendly error messages for each field type
+ * 
+ * CHANGES MADE:
+ * - Uses setCustomValidity() to provide specific error messages
+ * - Checks each field's validity state before setting message
+ * - Clears custom validity for valid fields
+ */
+const setCustomValidationMessages = function() {
+    const username = document.getElementById("reg-username-input")
+    const password = document.getElementById("reg-password-input")
+    const passwordVerify = document.getElementById("reg-password-verify-input")
+    const firstName = document.getElementById("reg-first-name-input")
+    const lastName = document.getElementById("reg-last-name-input")
+    const email = document.getElementById("reg-email-input")
+    
+    // Username validation
+    if (username.validity.valueMissing) {
+        username.setCustomValidity("Please enter a username")
+    } else if (username.validity.tooShort) {
+        username.setCustomValidity("Username must be at least 5 characters long")
+    } else {
+        username.setCustomValidity("")
+    }
+    
+    // Password validation
+    if (password.validity.valueMissing) {
+        password.setCustomValidity("Please enter a password")
+    } else if (password.validity.tooShort) {
+        password.setCustomValidity("Password must be at least 8 characters long")
+    } else {
+        password.setCustomValidity("")
+    }
+    
+    // Password verify validation
+    if (passwordVerify.validity.valueMissing) {
+        passwordVerify.setCustomValidity("Please verify your password")
+    } else {
+        passwordVerify.setCustomValidity("")
+    }
+    
+    // First name validation
+    if (firstName.validity.valueMissing) {
+        firstName.setCustomValidity("Please enter your first name")
+    } else {
+        firstName.setCustomValidity("")
+    }
+    
+    // Last name validation
+    if (lastName.validity.valueMissing) {
+        lastName.setCustomValidity("Please enter your last name")
+    } else {
+        lastName.setCustomValidity("")
+    }
+    
+    // Email validation
+    if (email.validity.valueMissing) {
+        email.setCustomValidity("Please enter your email address")
+    } else if (email.validity.typeMismatch) {
+        email.setCustomValidity("Please enter a valid email address")
+    } else {
+        email.setCustomValidity("")
+    }
 }
 
 /**
